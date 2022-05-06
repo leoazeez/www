@@ -38,7 +38,7 @@ if (isset($_POST['upload'])){
     #checking if the file has the appropriate extension, if it does we store it in the database, if it doesn't we display an error and we redirect the student to the uplaod_file page
     $array = explode('.', $final_file);
     $extension = end($array);
-      if($extension == "py"){
+      if($extension == "zip"){
         $request_insert_file = "insert into submission(student,assignment,file) values(".$default_student_id.",".$default_assignment_id.",'".$final_file."')";
         $result = mysqli_query($conn,$request_insert_file);
         $last_submission_id = mysqli_insert_id($conn);
@@ -46,7 +46,7 @@ if (isset($_POST['upload'])){
         echo "<script type=\"text/javascript\">alert('Success : File Submited Successfully')</script>";
       }
       else {
-        echo "<script type=\"text/javascript\">alert('Error : Upload a Pyhton File')</script>";
+        echo "<script type=\"text/javascript\">alert('Error : Upload a zip File')</script>";
         //header('Location: file_upload.php'); 
       }
 
